@@ -1,11 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file
+from flask import Flask, render_template, request
 import pandas as pd
-import re
-import time
-import os
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials	
+from oauth2client.service_account import ServiceAccountCredentials
 
 app = Flask(__name__)
 
@@ -14,7 +11,7 @@ app = Flask(__name__)
 scope = ['https://spreadsheets.google.com/feeds',
         'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials.from_json_keyfile_name(
-    'creds.json', scope
+    '/home/sizematters/mysite/creds.json', scope
 )
 gc = gspread.authorize(credentials)
 

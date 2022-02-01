@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Discourse formulae</title>
+  <title>size matters</title>
 
     <link rel="stylesheet" href="/static/css/bootstrap-4.5.2.min.css" type="text/css">
 
@@ -26,11 +26,11 @@
 </head>
 
 <body class="grey">
-    <div style="position: absolute;margin-left: calc(50% - (400px – 2));margin-top: 0.8em;z-index:1;">
-        <a href="/">
-            <img src="/static/img/logo.png" height="110px">
-        </a>
-    </div>
+    <!--<div style="position: absolute;margin-left: calc(50% - (400px – 2));margin-top: 0.8em;z-index:1;">-->
+    <!--    <a href="/">-->
+    <!--        <img src="/static/img/logo.png" height="110px">-->
+    <!--    </a>-->
+    <!--</div>-->
 
   <!-- Navigation -->
   <nav class="navbar navbar-dark bg-dark static-top yellow container-fluid" style="height: 65px;">
@@ -46,17 +46,17 @@
   <div class="container-fluid" style="max-width: 1150px;height: 0px;">
 </div>
   <!-- <nav class="grey" style="height: 300px;"> -->
-<!--     
+<!--
     <div style="text-align: center; padding-top: 60px;padding-bottom: 20px;">
         <h1>Здравствуйте!<br>
             Пожалуйста пройдите опрос...</h1>
     </div>
-    
+
     <div style="text-align: left;width: 50%;margin:auto">
         <div>
             <form action="/small" method="GET" autocomplete="off">
                 <label>Возраст</label>
-                <input required type="number" step="1" class="form-control" name="age" id="main input" placeholder="Укажите количество полных лет">   
+                <input required type="number" step="1" class="form-control" name="age" id="main input" placeholder="Укажите количество полных лет">
                 <div class="form-group center" style="width: max-content;padding-bottom: 15px;padding-top: 20px;">
                     <button class="btn btn-primary" style="background-color: #d14f58;border: #00aabb;">продолжить</button>
                 </div>
@@ -67,27 +67,27 @@
   <div style="text-align: center; padding-top: 60px;padding-bottom: 20px;">
     <h1><p id="demo"></p></h1>
     </div>
-  
+
   <script>
     // Set the date we're counting down to
     // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-    var goal = new Date().getTime() + 60000
+    var goal = new Date().getTime() + 600000
     // Update the count down every 1 second
     var x = setInterval(function() {
-    
+
       // Get today's date and time
       var now = new Date().getTime();
-    
+
       // Find the distance between now and the count down date
       var distance = goal - now;
-    
+
       // Time calculations for days, hours, minutes and seconds
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
+
       // Display the result in the element with id="demo"
       document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-    
+
       // If the count down is finished, write some text
       if (distance < 0) {
         clearInterval(x);
