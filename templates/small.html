@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Discourse formulae</title>
+
+    <link rel="stylesheet" href="/static/css/bootstrap-4.5.2.min.css" type="text/css">
+
+    <script type="text/javascript" src="/static/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.bundle-4.5.2.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+
+
+</head>
+
+<body class="grey">
+    <div style="position: absolute;margin-left: calc(50% - (400px – 2));margin-top: 0.8em;z-index:1;">
+        <a href="/">
+            <img src="/static/img/logo.png" height="110px">
+        </a>
+    </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-dark bg-dark static-top yellow container-fluid" style="height: 65px;">
+    <div class="container-fluid" style="max-width: 1150px;">
+        <div style="position: relative;top: 50%;left: 50%;transform: translate(-50%, 0);">
+            <a class="navbar-brand d-none d-sm-block" href="/">
+                ОПРОС
+            </a>
+        </div>
+      </button>
+    </div>
+  </nav>
+  <div class="container-fluid" style="max-width: 1150px;height: 0px;">
+</div>
+  <!-- <nav class="grey" style="height: 300px;"> -->
+<!--     
+    <div style="text-align: center; padding-top: 60px;padding-bottom: 20px;">
+        <h1>Здравствуйте!<br>
+            Пожалуйста пройдите опрос...</h1>
+    </div>
+    
+    <div style="text-align: left;width: 50%;margin:auto">
+        <div>
+            <form action="/small" method="GET" autocomplete="off">
+                <label>Возраст</label>
+                <input required type="number" step="1" class="form-control" name="age" id="main input" placeholder="Укажите количество полных лет">   
+                <div class="form-group center" style="width: max-content;padding-bottom: 15px;padding-top: 20px;">
+                    <button class="btn btn-primary" style="background-color: #d14f58;border: #00aabb;">продолжить</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+  <!-- </nav> -->
+  <div style="text-align: center; padding-top: 60px;padding-bottom: 20px;">
+    <h1><p id="demo"></p></h1>
+    </div>
+  
+  <script>
+    // Set the date we're counting down to
+    // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+    var goal = new Date().getTime() + 60000
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+      // Get today's date and time
+      var now = new Date().getTime();
+    
+      // Find the distance between now and the count down date
+      var distance = goal - now;
+    
+      // Time calculations for days, hours, minutes and seconds
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "";
+        document.getElementById("send_small").click();
+      }
+    }, 1000);
+    </script>
+
+<div class="mini-card blue-blue" style="margin-top: 20px;">
+    <div class="container">
+        Напишите через запятую список объектов маленького размера.
+        Избегайте словосочетаний (например, "маленькая чашка", "маленький арбуз")
+        и уменьшительно-ласкательных форм, образованных от других слов (например, "лепесточек", "подушечка", "окошко").
+        <br>
+        На составление списка отводится пять минут, после чего форма будет автоматически отправлена.
+        Вы можете продолжить в любой момент, если закончите раньше.
+    </div>
+</div>
+
+
+<div style="text-align: left;width: min(700px, 70%);margin:auto;margin-top: 30px;">
+    <div>
+        <form action="/{{link}}" method="GET" autocomplete="off">
+            <textarea class="form-control" name="small" cols="40" rows="5"></textarea>
+            <div style="display: none;">
+                <input name="stop" value="{{stop}}">
+                <input name="big" value="{{big}}">
+                <input name="age" value="{{age}}">
+                <input name="type" value="{{type}}">
+            </div>
+            <div class="form-group center" style="width: max-content;padding-bottom: 15px;padding-top: 20px;">
+                <button class="btn btn-primary" style="background-color: #d14f58;border: #00aabb;" id="send_small">продолжить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <footer class="footer-59391" style="margin-top: 150px;">
+    <div class="container-fluid" style="position: relative;">
+        <div class="row">
+            <div class="central-footer" style="align-content: center;height: 75px; z-index: 1;position: absolute;top: -214%;left: 50%;transform: translate(-50%, 0);">
+                <div class="container-fluid" style="text-align: center;">
+                <div class="form-group left" style="margin:auto;">
+                    <b>Contacts:</b> <br>
+                    anton.buzanov.00@gmail.com
+                </div>
+                <div class="form-group right" style="margin:auto;margin-top: 25px;">
+                    Multilingual Pragmaticon, 2021 <br>
+                    School of Linguistics, HSE, Moscow
+                </div>
+            </div>
+            </div>
+            <div class="left-footer" style="height: 75px; width: 50%;position: absolute;bottom: 0;">
+            </div>
+            <div class="right-footer" style="height: 75px; width: 50%;position: absolute;bottom: 0;right:0;">
+            </div>
+            <p class="m-0">.</p>
+        </div>
+    </div>
+</footer> -->
+
+  <!-- Initialize the plugin: -->
+  <script src="/static/js/main.js" type="text/javascript"></script>
+  <script src="/static/js/modal.js" type="text/javascript"></script>
+
+</body>
+
+</html>
