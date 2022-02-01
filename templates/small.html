@@ -21,7 +21,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    
+    <script>
+        function count_down() {
+            var goal = new Date().getTime() + 60000
 
+            var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = goal - now;
+
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "";
+                document.getElementById("send_small").click();
+            }
+            }, 1000);
+        }
+        function my_function() {
+            var x = document.getElementById("small_form");
+            x.style.display = "block";
+            var y = document.getElementById("open_small");
+            y.style.display = "none";
+            count_down();
+            }
+    </script>
 
 </head>
 
@@ -68,49 +96,22 @@
     <h1><p id="demo"></p></h1>
     </div>
 
-  <script>
-    // Set the date we're counting down to
-    // var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-    var goal = new Date().getTime() + 600000
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-      // Get today's date and time
-      var now = new Date().getTime();
-
-      // Find the distance between now and the count down date
-      var distance = goal - now;
-
-      // Time calculations for days, hours, minutes and seconds
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // Display the result in the element with id="demo"
-      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-
-      // If the count down is finished, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "";
-        document.getElementById("send_small").click();
-      }
-    }, 1000);
-    </script>
-
 <div class="mini-card blue-blue" style="margin-top: 20px;">
     <div class="container">
         Напишите через запятую список объектов маленького размера.
         Избегайте словосочетаний (например, "маленькая чашка", "маленький арбуз")
         и уменьшительно-ласкательных форм, образованных от других слов (например, "лепесточек", "подушечка", "окошко").
         <br>
-        На составление списка отводится пять минут, после чего форма будет автоматически отправлена.
+        На составление списка отводится десять минут, после чего форма будет автоматически отправлена.
         Вы можете продолжить в любой момент, если закончите раньше.
     </div>
 </div>
 
+<div class="form-group center" style="width: max-content;padding-bottom: 15px;padding-top: 20px;">
+    <button class="btn btn-primary" onclick="my_function()" style="background-color: #d14f58;border: #00aabb;display: block;" id="open_small">начать</button>
+</div>
 
-<div style="text-align: left;width: min(700px, 70%);margin:auto;margin-top: 30px;">
-    <div>
+<div style="text-align: left;width: min(700px, 70%);margin:auto;margin-top: 30px;display: none;" id="small_form">
         <form action="/{{link}}" method="GET" autocomplete="off">
             <textarea class="form-control" name="small" cols="40" rows="5"></textarea>
             <div style="display: none;">
@@ -123,7 +124,6 @@
                 <button class="btn btn-primary" style="background-color: #d14f58;border: #00aabb;" id="send_small">продолжить</button>
             </div>
         </form>
-    </div>
 </div>
 
 <!-- <footer class="footer-59391" style="margin-top: 150px;">
